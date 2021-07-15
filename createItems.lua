@@ -17,7 +17,7 @@ local world = debug.getWorld(0)
 
 local create = {}
 
-function create.insert(id, amount, damage, nbt, x, y, z, side) {
+function create.insert(id, amount, damage, nbt, x, y, z, side)
     side = side or 1
 
     --print("Attempting to insert item ", id, damage, "to location", x, y, z, "side:", side)
@@ -26,6 +26,6 @@ function create.insert(id, amount, damage, nbt, x, y, z, side) {
 
     print("First I:", inserted)
     return inserted
-}
+end
 
 return create
