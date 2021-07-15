@@ -53,7 +53,7 @@ function create.insertAll(id, amount, damage, nbt, x, y, z, side)
     timesInserted = timesInserted + 1
   end
 
-  print("Inserted:", numInserted, "of", id, damage)
+  print("Inserted " .. numInserted .. " of " .. id .. ":" .. damage)
 
 end
 
