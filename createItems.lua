@@ -20,7 +20,7 @@ local create = {}
 function create.insert(id, amount, damage, nbt, x, y, z, side) {
     side = side or 1
 
-    print("Attempting to insert item ", id, damage, "to location", x, y, z, "side:", side)
+    --print("Attempting to insert item ", id, damage, "to location", x, y, z, "side:", side)
     
     local inserted = world.insertItem(id, amount, damage, nbt, x, y, z, side)
 
