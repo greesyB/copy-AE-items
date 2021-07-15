@@ -24,7 +24,6 @@ function create.insert(id, amount, damage, nbt, x, y, z, side)
     
     local inserted = world.insertItem(id, amount, damage, nbt, x, y, z, side)
 
-    print("First I:", inserted)
     return inserted
 end
 
