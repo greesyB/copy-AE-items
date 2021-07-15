@@ -64,10 +64,10 @@ for e in itemList do
 
     local wasInserted = create.insert(id, toInsert, damage, nbt, x, y, z)
 
+    if not(wasInserted) then break end
+
     numInserted = numInserted + toInsert
     timesInserted = timesInserted + 1
-
-    if not(wasInserted) then break end
   end
   print("Inserted:", numInserted, "of", id)
   print("")
