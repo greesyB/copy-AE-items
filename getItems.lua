@@ -1,11 +1,14 @@
 local comp = require("component")
 local controller = comp.me_controller
 local itemList = controller.allItems()
-local create = require("createItems")
 
 local x = -4333
 local y = 76
 local z = 262
+
+-- delete items file contents if there already are any
+local f = io.open("items", "w")
+f:close()
 
 for e in itemList do
   local id = ""
@@ -48,28 +51,12 @@ for e in itemList do
   nbt = nbt .. "}"
   print(nbt)
 
-  local numInserted = 0
-  local timesInserted = 0
-  while not(numInserted == amount) do
-    local toInsert = 64
+  local fileString = id .. "," .. amount .. "," .. damage .. "," .. nbt .. "\n"
 
-    if amount - numInserted < 64 then
-      toInsert = amount - numInserted
-    end
+  local f = io.open("items", "a")
+  f:write(fileString)
+  f:close()
 
-    -- 9 slots in interface
-    if timesInserted % 9 == 0 then
-      os.sleep(0.1)
-    end
-
-    local wasInserted = create.insert(id, toInsert, damage, nbt, x, y, z)
-
-    if not(wasInserted) then break end
-
-    numInserted = numInserted + toInsert
-    timesInserted = timesInserted + 1
-  end
-  print("Inserted:", numInserted, "of", id)
   print("")
 
   os.sleep(0.2)
