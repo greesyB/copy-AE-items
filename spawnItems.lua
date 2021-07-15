@@ -42,7 +42,7 @@ for line in f:lines() do
 
   print("");
 
-  os.sleep(0.2)
+  os.sleep(0.1)
 end
 
 f:close()
