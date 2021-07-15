@@ -14,7 +14,7 @@ for e in itemList do
   local nbt = "{"
 
   for k,v in pairs(e) do
-    if (not(k == "transferLimit") and not(k == "size") and not(k = "maxSize") and not(k = "isCraftable")) then
+    if (not(k == "transferLimit") and not(k == "size") and not(k == "maxSize") and not(k == "isCraftable")) then
       local itemVal = ""
 
       if type(v) == "string" then
