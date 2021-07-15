@@ -48,8 +48,28 @@ for e in itemList do
   nbt = nbt .. "}"
   print(nbt)
 
-  local inserted = create.insert(id, amount, damage, nbt, x, y, z)
-  print("Inserted:", inserted)
+  local numInserted = 0
+  local timesInserted = 0
+  while not(numInserted == amount) do
+    local toInsert = 64
 
+    if amount - numInserted < 64 then
+      toInsert = amount - numInserted
+    end
+
+    -- 9 slots in interface
+    if timesInserted % 9 == 0 then
+      os.sleep(0.1)
+    end
+
+    local wasInserted = create.insert(id, toInsert, damage, nbt, x, y, z)
+
+    timesInserted = timesInserted + 1
+
+    if not(wasInserted) then break
+  end
+  print("Inserted:", numInserted, "of", id)
   print("")
+
+  os.sleep(0.2)
 end
