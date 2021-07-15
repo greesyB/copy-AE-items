@@ -3,7 +3,9 @@ local controller = comp.me_controller
 local itemList = controller.allItems()
 local create = require("createItems")
 
-local ignoreTags = ["transferLimit", "size", "maxSize"]
+local x = -4333
+local y = 76
+local z = 262
 
 for e in itemList do
   local id = ""
