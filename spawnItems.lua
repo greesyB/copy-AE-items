@@ -32,10 +32,11 @@ for line in f:lines() do
     increment = increment + 1
   end
 
-  print("id", id)
-  print("amount", amount)
-  print("damage", damage)
-  print("nbt", nbt)
+  print("Attempting to insert " .. amount .. " of " .. id)
+  -- print("id", id)
+  -- print("amount", amount)
+  -- print("damage", damage)
+  -- print("nbt", nbt)
 
   create.insertAll(id, amount, damage, nbt, x, y, z, 1)
 
