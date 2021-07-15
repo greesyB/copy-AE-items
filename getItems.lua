@@ -47,11 +47,12 @@ for e in itemList do
 
   end
 
+  nbt = nbt.gsub(nbt, "[\n\r]", "")
   nbt = nbt.gsub(nbt, ", $", "")
   nbt = nbt .. "}"
   print(nbt)
 
-  local fileString = id .. "," .. amount .. "," .. damage .. "," .. nbt .. "\n"
+  local fileString = id .. "####" .. amount .. "####" .. damage .. "####" .. nbt .. "\n"
 
   local f = io.open("items", "a")
   f:write(fileString)
