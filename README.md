@@ -13,7 +13,11 @@ An attempt to use OC to copy item data from an AE network to be able to restore 
 8. Change the x,y,z variables in `spawnItems` to the coords of the inventory to insert (e.g. interface on the network)
 9. Run `spawnItems` and wait (a potentially very long time depending on number of items)
 
-Items that fail to insert will do so more-or-less silently, aside from printing that 0 were inserted.
+Items that fail to insert will do so more-or-less silently, aside from printing that 0 were inserted and saving the
+```
+id: <id:subid(damage)> amount: <amount> \n
+```
+to a `failedItems` file.
 
 ### Known Issues
 
