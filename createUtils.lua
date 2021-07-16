@@ -40,8 +40,8 @@ function create.insertAll(id, amount, damage, nbt, x, y, z, side)
       toInsert = amount - numInserted
     end
 
-    -- 9 slots in interface
-    if timesInserted % 9 == 0 then
+    -- 32 stacks per tick with UEV conveyor, must output to 4 interfaces
+    if timesInserted % 32 == 0 then
       os.sleep(0.1)
     end
 
