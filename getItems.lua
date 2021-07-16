@@ -10,7 +10,19 @@ for e in itemList do
   local nbt = "{"
 
   for k,v in pairs(e) do
-    if (not(k == "transferLimit") and not(k == "size") and not(k == "maxSize") and not(k == "isCraftable")) then
+    -- Skip non-NBT tags
+    if (
+      e["hasTag"] == true and (
+      not(k == "size") and
+      not(k == "maxSize") and
+      not(k == "name") and
+      not(k == "label") and
+      not(k == "damage") and
+      not(k == "maxDamage") and
+      not(k == "isCraftable") and
+      not(k == "transferLimit") and
+      not(k == "hasTag"))
+    ) then
       local itemVal = ""
 
       if type(v) == "string" then
@@ -24,14 +36,14 @@ for e in itemList do
       local itemString = k .. ": " .. itemVal
       nbt = nbt .. itemString
 
-      if k == "name" then
-        id = v
-      end
+    end
 
-      if k == "damage" then
-        damage = v
-      end
+    if k == "name" then
+      id = v
+    end
 
+    if k == "damage" then
+      damage = v
     end
 
     if k == "size" then
