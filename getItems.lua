@@ -2,14 +2,7 @@ local comp = require("component")
 local controller = comp.me_controller
 local itemList = controller.allItems()
 
-local x = -4333
-local y = 76
-local z = 262
-
--- delete items file contents if there already are any
-local f = io.open("items", "w")
-f:close()
-
+local inc = 0
 for e in itemList do
   local id = ""
   local amount = 1
@@ -53,12 +46,14 @@ for e in itemList do
   print(nbt)
 
   local fileString = id .. "####" .. amount .. "####" .. damage .. "####" .. nbt .. "\n"
-
-  local f = io.open("items", "a")
+  local fnum = math.floor(inc / 500)
+  if fnum < 1 then fnum = 1 end
+  local f = io.open("items" .. fnum, "a")
   f:write(fileString)
   f:close()
 
-  print("")
-
-  os.sleep(0.1)
+  inc = inc + 1
+  if inc % 20 == 0 then
+    os.sleep(0.1)
+  end
 end
