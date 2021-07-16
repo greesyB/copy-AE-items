@@ -52,7 +52,13 @@ for k,v in pairs(allFiles) do
       end
     
       print("Attempting to insert " .. amount .. " of " .. id)
-      create.insertAll(id, amount, damage, nbt, x, y, z, 1)
+      local numInserted = create.insertAll(id, amount, damage, nbt, x, y, z, 1)
+
+      if numInserted == 0 then
+        local fFailed = io.open("failedItems", "a")
+        fFailed:write("id: \"" .. id .. ":" .. damage .. "\"" .. " amount: " .. amount)
+        fFailed:close()
+      end
     
       print("");
     

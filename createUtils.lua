@@ -56,6 +56,8 @@ function create.insertAll(id, amount, damage, nbt, x, y, z, side)
 
   print("Inserted " .. numInserted .. " of " .. id .. ":" .. damage)
 
+  return numInserted
+
 end
 
 return create
