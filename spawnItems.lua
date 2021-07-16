@@ -1,10 +1,20 @@
 local create = require("createUtils")
 
-local f = io.open("items", "r")
-
 local x = -4333
 local y = 76
 local z = 262
+
+-- Lua implementation of PHP scandir function
+function scandir(directory)
+  local i, t, popen = 0, {}, io.popen
+  local pfile = popen('ls -a "'..directory..'"')
+  for filename in pfile:lines() do
+      i = i + 1
+      t[i] = filename
+  end
+  pfile:close()
+  return t
+end
 
 function split (inputstr)
   local t={}
@@ -14,35 +24,46 @@ function split (inputstr)
   return t
 end
 
-for line in f:lines() do
-  local splitLine = split(line)
+local allFiles = scandir("/home/copy-AE-items")
+local processed = 0
 
-  local id = ""
-  local amount = 1
-  local damage = 0.0
-  local nbt = ""
+for k,v in pairs(allFiles) do
+  if string.find(v, "items") then
+    print(k, v)
 
-  local increment = 0
-  for k,v in pairs(splitLine) do
-    if increment == 0 then id = v end
-    if increment == 1 then amount = tonumber(v) end
-    if increment == 2 then damage = tonumber(v) end
-    if increment >  2 then nbt = nbt .. v end
+    local f = io.open(v, "r")
 
-    increment = increment + 1
+    for line in f:lines() do
+      local splitLine = split(line)
+    
+      local id = ""
+      local amount = 1
+      local damage = 0.0
+      local nbt = ""
+    
+      local increment = 0
+      for k,v in pairs(splitLine) do
+        if increment == 0 then id = v end
+        if increment == 1 then amount = tonumber(v) end
+        if increment == 2 then damage = tonumber(v) end
+        if increment >  2 then nbt = nbt .. v end
+    
+        increment = increment + 1
+      end
+    
+      print("Attempting to insert " .. amount .. " of " .. id)
+      create.insertAll(id, amount, damage, nbt, x, y, z, 1)
+    
+      print("");
+    
+      os.sleep(0.1)
+    end
+    
+    f:close()
+
+    processed = processed + 1
+
   end
-
-  print("Attempting to insert " .. amount .. " of " .. id)
-  -- print("id", id)
-  -- print("amount", amount)
-  -- print("damage", damage)
-  -- print("nbt", nbt)
-
-  create.insertAll(id, amount, damage, nbt, x, y, z, 1)
-
-  print("");
-
-  os.sleep(0.1)
 end
 
-f:close()
+print("Processed " .. processed .. " item files. Done.")
