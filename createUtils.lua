@@ -41,6 +41,7 @@ function create.insertAll(id, amount, damage, nbt, x, y, z, side)
     end
 
     -- 32 stacks per tick with UEV conveyor, must output to 4 interfaces
+    -- seems just as slow as outputting 9 stacks (to interface)?
     if timesInserted % 32 == 0 then
       os.sleep(0.1)
     end
