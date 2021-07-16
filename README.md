@@ -20,5 +20,5 @@ Items that fail to insert will do so more-or-less silently, aside from printing 
 - Some items will fail to insert, mostly items with a lot of NBT data. Examples I experienced are all AE patterns (may copy, but will always be invalid), and many GT components (but not all)
 - Some items are not true copies of the original, and won't stack with them; e.g. I had a Cable Diode 4A EV where the copied version would not stack with the original version.
 - Some items with an EU charge level will have 0 charge when inserted, even though the NBT charge tags are copied
-- All GT and TC tools will fail to insert
+- All GT and TC tools will fail to insert or will insert with NULL material
 - Some items will insert, but lose all meaningful properties of the original. Notably all ArchitectureCraft blocks such as Roof Tiles lose the block they were crafted from and appear as wood.
