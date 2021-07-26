@@ -56,7 +56,7 @@ for k,v in pairs(allFiles) do
 
       if numInserted == 0 then
         local fFailed = io.open("failedItems", "a")
-        fFailed:write("id: \"" .. id .. ":" .. damage .. "\"" .. " amount: " .. amount)
+        fFailed:write("id: \"" .. id .. ":" .. damage .. "\"" .. " amount: " .. amount .. "\n")
         fFailed:close()
       end
     
