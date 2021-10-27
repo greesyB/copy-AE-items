@@ -26,5 +26,5 @@ These issues are probably all due to me not understanding NBT handling properly.
 - Some items will fail to insert, mostly items with a lot of NBT data. Examples I experienced are all AE patterns (may copy, but will always be invalid), Tinkers tools, TC wands, and some GT machines (few comparative to the amount that worked properly)
 - Some items are not true copies of the original, and won't stack with them; e.g. I had a Cable Diode 4A EV where the copied version would not stack with the original version.
 - Some items with an EU charge level will have 0 charge when inserted, even though the NBT charge tags are copied
-- All GT will fail to insert or will insert with NULL material
+- All GT tools will fail to insert or will insert with NULL material
 - Some items will insert, but lose all meaningful properties of the original. Notably all ArchitectureCraft blocks such as Roof Tiles lose the block they were crafted from and appear as wood.
